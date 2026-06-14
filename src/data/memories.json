@@ -1,0 +1,14 @@
+[
+  { "id": "mem-01", "caption": "On March 8th, the boys in our class brought us flowers 😇", "rotation": -3, "size": "lg" },
+  { "id": "mem-02", "caption": "We celebrated Men's and Soldiers' Day and had a dinner together.", "rotation": 2, "size": "md" },
+  { "id": "mem-03", "caption": "Final year group project at midnight 📚", "rotation": -5, "size": "sm" },
+  { "id": "mem-04", "caption": "We went hiking together. ☀️", "rotation": 4, "size": "md" },
+  { "id": "mem-05", "caption": "After planning our New Year's celebration", "rotation": -2, "size": "lg" },
+  { "id": "mem-06", "caption": "Every now and then, we show up on TV too, lol 📺", "rotation": 6, "size": "sm" },
+  { "id": "mem-07", "caption": "A guy who goes to the gym is on a whole different level—of course he'd have a gorgeous girlfriend", "rotation": -4, "size": "md" },
+  { "id": "mem-08", "caption": "Student Startup Competition 🚀", "rotation": 3, "size": "lg" },
+  { "id": "mem-09", "caption": "Among us are sports champions as well. 🤫", "rotation": -6, "size": "sm" },
+  { "id": "mem-10", "caption": "Thesis submission. We actually did it 😭", "rotation": 1, "size": "lg" },
+  { "id": "mem-11", "caption": "once upon a time in Darkhan", "rotation": -3, "size": "md" },
+  { "id": "mem-12", "caption": "Our post-graduation getaway 🥲", "rotation": 5, "size": "md" }
+]

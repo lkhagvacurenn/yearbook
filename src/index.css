@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Reset & base ─────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #0a0f1e;
+  color: white;
+  user-select: none;
+}
+
+/* Allow scroll inside pages */
+.page-scroll {
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* ── Scrollbar styling ──────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.7);
+}
+
+/* ── Polaroid / photo frame ─────────────────────────── */
+.polaroid {
+  background: white;
+  padding: 8px 8px 28px 8px;
+  box-shadow: 3px 5px 18px rgba(0, 0, 0, 0.3);
+  border: 1px solid #e5e7eb;
+}
+
+/* ── Book page background textures ─────────────────── */
+.page-notebook {
+  background-color: #ffffff;
+  background-image:
+    repeating-linear-gradient(
+      transparent, transparent 27px,
+      #bfdbfe 27px, #bfdbfe 28px
+    );
+  background-size: 100% 28px;
+  background-position: 0 40px;
+}
+
+.page-scrapbook {
+  background-color: #f5f0e8;
+}
+
+.page-dark {
+  background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #0c1a2e 100%);
+}
+
+/* ── Tape effect (pseudo-element) ───────────────────── */
+.tape::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: 50px;
+  height: 20px;
+  background: rgba(255, 255, 150, 0.65);
+  border-radius: 2px;
+}
+
+/* ── Handwriting text helper ────────────────────────── */
+.handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+.serif-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ── 3-D perspective wrapper ────────────────────────── */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* ── Canvas confetti override ───────────────────────── */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Selection color ────────────────────────────────── */
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: white;
+}
+
+/* ── Responsive util ────────────────────────────────── */
+@media (max-width: 640px) {
+  body {
+    overflow: auto;
+  }
+  html, #root {
+    overflow: auto;
+  }
+}

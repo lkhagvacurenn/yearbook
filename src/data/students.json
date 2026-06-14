@@ -1,0 +1,26 @@
+[
+  { "id": "001", "name": "Б.Балбар",    "quote": "Being popular guy is so exhausting!" },
+  {"id":"002","name":"Ч.Ариунболд","quote":"University life is like a roller coaster. Except the brakes don't work."},
+  { "id": "003", "name": "П.Батгэрэл",     "quote": "University life is like a roller coaster. Except the brakes don't work." },
+  { "id": "004", "name": "Б.Батмягмар",      "quote": "Submitted at 11:59 PM. Character development." },
+  { "id": "005", "name": "Б.Баярцогт",    "quote": "Stack Overflow got me through more than my lecturers did." },
+  { "id": "006", "name": "Т.Буян-Өлзий",     "quote": "Group projects taught me that I work best alone." },
+  { "id": "007", "name": "Г.Ган-Эрдэнэ",      "quote": "Four years, one coffee machine, infinite deadlines." },
+  { "id": "008", "name": "Э.Ган-Эрдэнэ",    "quote": "It works on my machine. Ship it." },
+  { "id": "009", "name": "Х.Дармаасүрэн",   "quote": "The library was my second home. The canteen was my first." },
+  { "id": "010", "name": "С.Замилан",    "quote": "I learned more from debugging than from lectures. Sorry, professors." },
+  { "id": "011", "name": "Д.Зунхов",      "quote": "Survived thesis season. Barely. But I survived." },
+  { "id": "012", "name": "Б.Ичинхорлоо",    "quote": "If it compiles, it's good enough to present." },
+  { "id": "013", "name": "Б.Лхагвасүрэн",         "quote": "Love Love Love" },
+  { "id": "014", "name": "М.Мөнхбат",  "quote": "Four years of 'we'll fix it later.' Later never came." },
+  { "id": "015", "name": "М.Насан-Очир",   "quote": "Internship taught me more in 3 months than university in 4 years. Respectfully." },
+  { "id": "016", "name": "н.Отгон-Эрдэнэ",      "quote": "I didn't procrastinate. I did everything at the last minute *efficiently*." },
+  {"id":"017","name":"Э.Отгонтуяа","quote":"Deadline anxiety is just my love language at this point."},
+  {"id":"018","name":"Б.Раднаабазар","quote":"Sleep. Eat. Code. Repeat. Until graduation."},
+  { "id": "019", "name": "Н.Содбаяр",  "quote": "I became a morning person. Just not by choice." },
+  { "id": "020", "name": "Л.Сэргэлэн",  "quote": "They said university would be the best years of my life. Jury's still out." },
+  { "id": "021", "name": "М.Сугарсүрэн",       "quote": "We didn't just graduate. We survived a masterclass in resilience." },
+  { "id": "022", "name": "Г.Тэмүүлэн",  "quote": "I thought I was learning to code. Turns out I was just learning to Google." },
+  { "id": "023", "name": "Б.Бат-Эрдэнэ",  "quote": "I thought I was learning to code. Turns out I was just learning to Google." }
+
+]
