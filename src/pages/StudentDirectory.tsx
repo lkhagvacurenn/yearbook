@@ -5,8 +5,13 @@ import { staggerContainer, fadeInUp } from '../animations/variants';
 import { placeholderUrl } from '../utils/imageLoader';
 import studentsData from '../data/students.json';
 import type { Student } from '../types';
+import { useImagePreloader } from '../hooks/useImagePreloader';
+import PageImageLoader from '../components/PageImageLoader';
 
 const students = studentsData as Student[];
+
+// Preload portrait images (primary only — child photos load on hover)
+const PORTRAIT_URLS = students.map(s => `./images/students/${s.id}.png`);
 
 const decorations = [
   { Icon: Star,          x: 3,  y: 4,  size: 14, rotate: 15,  opacity: 0.35 },
@@ -105,6 +110,7 @@ function StudentCard({ student, index }: { student: Student; index: number }) {
 }
 
 export default function StudentDirectory() {
+  const { loaded, progress } = useImagePreloader(PORTRAIT_URLS);
   return (
     <div className="w-full h-full overflow-y-auto relative"
       style={{ background:'linear-gradient(180deg,#0b0f1a 0%,#0d1b3e 40%,#080d1a 100%)', minHeight:'100%' }}>
@@ -121,40 +127,42 @@ export default function StudentDirectory() {
       <div className="absolute inset-0 pointer-events-none"
         style={{ background:'radial-gradient(ellipse 70% 50% at 50% 30%,rgba(30,64,175,0.18) 0%,transparent 70%)', zIndex:0 }} />
 
-      {/* Header */}
-      <div className="relative z-10 pt-7 pb-4 px-6">
-        <div className="flex items-center gap-3 mb-1">
-          <GraduationCap size={24} color="#60a5fa" strokeWidth={1.5} />
-          <h2 style={{ fontFamily:'"Playfair Display",serif', fontSize:'clamp(1.3rem,3.5vw,2rem)', fontWeight:900, color:'white' }}>
-            Class of 2026
-          </h2>
+      <PageImageLoader loaded={loaded} progress={progress}>
+        {/* Header */}
+        <div className="relative z-10 pt-7 pb-4 px-6">
+          <div className="flex items-center gap-3 mb-1">
+            <GraduationCap size={24} color="#60a5fa" strokeWidth={1.5} />
+            <h2 style={{ fontFamily:'"Playfair Display",serif', fontSize:'clamp(1.3rem,3.5vw,2rem)', fontWeight:900, color:'white' }}>
+              Class of 2026
+            </h2>
+          </div>
+          <div className="flex items-center gap-2 ml-1">
+            <Users size={13} color="#64748b" />
+            <span style={{ fontFamily:'"Caveat",cursive', fontSize:'0.95rem', color:'#64748b' }}>
+              Information Technology
+            </span>
+          </div>
         </div>
-        <div className="flex items-center gap-2 ml-1">
-          <Users size={13} color="#64748b" />
-          <span style={{ fontFamily:'"Caveat",cursive', fontSize:'0.95rem', color:'#64748b' }}>
-            Information Technology
+
+        {/* Grid: 2 cols mobile → 3 cols sm → 4 cols md+ */}
+        <motion.div
+          className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-7 px-6 pb-10"
+          variants={staggerContainer} initial="hidden" animate="visible">
+          {students.map((s, i) => (
+            <StudentCard key={s.id} student={s} index={i} />
+          ))}
+        </motion.div>
+
+        {/* Footer */}
+        <div className="relative z-10 flex items-center gap-3 px-6 pb-6">
+          <div className="flex-1 h-px" style={{ background:'linear-gradient(90deg,rgba(30,64,175,0.4),transparent)' }} />
+          <BookOpen size={14} color="#1e3a8a" />
+          <span style={{ fontFamily:'"Caveat",cursive', fontSize:'0.85rem', color:'#334155' }}>
+            IT Class of 2026 Yearbook
           </span>
+          <div className="flex-1 h-px" style={{ background:'linear-gradient(90deg,transparent,rgba(30,64,175,0.4))' }} />
         </div>
-      </div>
-
-      {/* Grid: 2 cols mobile → 3 cols sm → 4 cols md+ */}
-      <motion.div
-        className="relative z-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-4 gap-y-7 px-6 pb-10"
-        variants={staggerContainer} initial="hidden" animate="visible">
-        {students.map((s, i) => (
-          <StudentCard key={s.id} student={s} index={i} />
-        ))}
-      </motion.div>
-
-      {/* Footer */}
-      <div className="relative z-10 flex items-center gap-3 px-6 pb-6">
-        <div className="flex-1 h-px" style={{ background:'linear-gradient(90deg,rgba(30,64,175,0.4),transparent)' }} />
-        <BookOpen size={14} color="#1e3a8a" />
-        <span style={{ fontFamily:'"Caveat",cursive', fontSize:'0.85rem', color:'#334155' }}>
-          IT Class of 2026 Yearbook
-        </span>
-        <div className="flex-1 h-px" style={{ background:'linear-gradient(90deg,transparent,rgba(30,64,175,0.4))' }} />
-      </div>
+      </PageImageLoader>
     </div>
   );
 }

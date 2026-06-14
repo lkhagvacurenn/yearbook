@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { Camera } from 'lucide-react';
+import { useImagePreloader } from '../hooks/useImagePreloader';
+import PageImageLoader from '../components/PageImageLoader';
 
 const PHOTOS = [
   'class-01', 'class-02', 'class-03', 'class-04', 'class-05',
@@ -7,15 +9,19 @@ const PHOTOS = [
   'class-11', 'class-12', 'class-13',
 ];
 
+const IMAGE_URLS = PHOTOS.map(id => `./images/class/${id}.png`);
+
 export default function ClassMemories() {
+  const { loaded, progress } = useImagePreloader(IMAGE_URLS);
   return (
     <div
-      className="w-full h-full overflow-y-auto"
+      className="w-full h-full overflow-y-auto relative"
       style={{
         background: 'linear-gradient(160deg,#0a0f1e 0%,#0d1b3e 50%,#080c18 100%)',
         minHeight: '100%',
       }}
     >
+    <PageImageLoader loaded={loaded} progress={progress}>
       {/* Header */}
       <div className="pt-6 px-6 pb-4 flex items-center gap-3">
         <Camera size={20} color="#93c5fd" />
@@ -106,6 +112,7 @@ export default function ClassMemories() {
         .masonry-gallery { --cols: 3; }
         @media (max-width: 640px) { .masonry-gallery { --cols: 2; } }
       `}</style>
+    </PageImageLoader>
     </div>
   );
 }
