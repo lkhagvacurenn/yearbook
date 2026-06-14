@@ -21,7 +21,7 @@ const sections = [
   {
     Icon: Building, color:'#34d399',
     title:'To Our University',
-    text:'ШУТИС — you gave us more than a degree. You gave us a community, a story, and four years we\'ll spend the rest of our lives telling stories about.',
+    text:'NUM — you gave us more than a degree. You gave us a community, a story, and four years we\'ll spend the rest of our lives telling stories about.',
   },
   {
     Icon: Coffee, color:'#fb923c',
