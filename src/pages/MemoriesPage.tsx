@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Camera, FolderOpen } from 'lucide-react';
 import memoriesData from '../data/memories.json';
 
-interface Memory { id: string; caption: string; category: string; }
+interface Memory { id: string; caption: string; rotation: number; size: string; }
 const memories = memoriesData as Memory[];
 
 const rotations = [-4, 3, -2, 5, -3, 2, -5, 4, -1, 3];
