@@ -3,7 +3,7 @@ import { preloadImages, buildStudentImageUrls } from '../utils/imageLoader';
 import studentsData from '../data/students.json';
 
 const FUNNY_MESSAGES = [
-  'Bro wait... 😅',
+  'Bro wait... ',
   'Loading memories...',
   'I am hosted on the cheapest server available.',
   'Before judging me, check your internet. 📡',

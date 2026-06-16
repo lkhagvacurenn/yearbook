@@ -1,5 +1,24 @@
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Camera } from 'lucide-react';
+
+const MESSAGES = [
+  'Bro wait... ',
+  'Loading memories...',
+  'I am hosted on the cheapest server available.',
+  'Before judging me, check your internet. 📡',
+  'You survived SISI for 4 years.',
+  'So I believe you can wait 5 more seconds. ⏳',
+  'Generating graduation nostalgia...',
+  'Loading academic trauma... 📚',
+  'Finding missing assignments... 🔍',
+  'Still loading... just like university WiFi.',
+  'Calibrating cap angle... 🎓',
+  'Counting late-night coding sessions...',
+  'Recovering from thesis panic... 😭',
+  'Compiling 4 years of memories...',
+  'Almost there. We promise. 🙏',
+];
 
 interface Props {
   loaded: boolean;
@@ -8,6 +27,14 @@ interface Props {
 }
 
 export default function PageImageLoader({ loaded, progress, children }: Props) {
+  const [msgIndex, setMsgIndex] = useState(0);
+
+  useEffect(() => {
+    if (loaded) return;
+    const iv = setInterval(() => setMsgIndex(i => (i + 1) % MESSAGES.length), 2000);
+    return () => clearInterval(iv);
+  }, [loaded]);
+
   return (
     <>
       <AnimatePresence>
@@ -26,9 +53,20 @@ export default function PageImageLoader({ loaded, progress, children }: Props) {
               <Camera size={40} color="#60a5fa" strokeWidth={1.5} />
             </motion.div>
 
-            <p style={{ fontFamily: '"Caveat",cursive', fontSize: '1.1rem', color: 'rgba(255,255,255,0.7)' }}>
-              Loading photos…
-            </p>
+            <div style={{ height: 32, display: 'flex', alignItems: 'center' }}>
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={msgIndex}
+                  style={{ fontFamily: '"Caveat",cursive', fontSize: '1.15rem', color: 'rgba(255,255,255,0.75)', textAlign: 'center', maxWidth: 280 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  {MESSAGES[msgIndex]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
 
             {/* Progress bar */}
             <div
@@ -50,7 +88,6 @@ export default function PageImageLoader({ loaded, progress, children }: Props) {
         )}
       </AnimatePresence>
 
-      {/* Always mount children so images can start loading */}
       <div style={{ opacity: loaded ? 1 : 0, transition: 'opacity 0.5s ease', height: '100%' }}>
         {children}
       </div>

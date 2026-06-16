@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import LoadingScreen from './components/LoadingScreen';
 import InvitationModal from './components/InvitationModal';
 import YearbookCover from './components/YearbookCover';
 import BookViewer from './components/BookViewer';
@@ -10,12 +9,7 @@ const ACCEPTED_KEY = 'it-yearbook-2026-accepted';
 
 export default function App() {
   const alreadyAccepted = localStorage.getItem(ACCEPTED_KEY) === 'true';
-  const [phase, setPhase] = useState<AppPhase>('loading');
-
-  // Skip invitation if already accepted — go straight to cover after loading
-  const handleLoadingDone = useCallback(() => {
-    setPhase(alreadyAccepted ? 'cover' : 'invitation');
-  }, [alreadyAccepted]);
+  const [phase, setPhase] = useState<AppPhase>(alreadyAccepted ? 'cover' : 'invitation');
 
   const handleAccept = useCallback(() => {
     localStorage.setItem(ACCEPTED_KEY, 'true');
@@ -26,11 +20,6 @@ export default function App() {
 
   return (
     <div className="fixed inset-0 overflow-hidden" style={{ background: '#0a0f1e' }}>
-      {/* ── Loading Screen ── */}
-      {phase === 'loading' && (
-        <LoadingScreen onDone={handleLoadingDone} />
-      )}
-
       {/* ── Invitation Modal ── */}
       <AnimatePresence>
         {phase === 'invitation' && (
